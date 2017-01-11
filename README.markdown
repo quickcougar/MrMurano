@@ -4,6 +4,82 @@
 [![Build Status](https://travis-ci.org/tadpol/MrMurano.svg?branch=master)](https://travis-ci.org/tadpol/MrMurano)
 [![Inline docs](http://inch-ci.org/github/exosite/MrMurano.svg?branch=master)](http://inch-ci.org/github/exosite/MrMurano)
 
+* [Using MrMurano](#using-mrmurano)
+* [Requirements and Setup](#requirements-and-setup)
+  * User has created an account
+  * User has installed MrMurano
+  * Directory layout definition
+    * modules
+    * endpoints
+    * eventhandlers
+    * files
+    * specs
+* Starting a new project from scratch
+  * `mkdir project`
+  * `cd project`
+  * List businesses to obtain ID
+  * Set business ID of project
+  * Create a product
+  * Save ID of product as returned
+  * Define product resources in specific file
+    * TODO: define file format
+  * `mr syncup --specs`
+    * Specify --specs because specs are skipped
+    * Only syncs up specs, no other files
+  * Create a solution
+  * Save ID of solution
+  * Associate product to solution
+    * `my assign set`
+    * TODO: How will this change in Okami?
+* Started a new project in UI
+  * `mkdir project`
+  * `cd project`
+  * `mr init`
+  * `mr syncdown`
+  * `mr syncdown --specs --cors`
+* Migrating an existing project from Exosite CLI
+  * Option 1: Migrate files in place
+    * `cd project`
+    * `mr config import`
+  * Option 2: Make new directory
+    * Follow steps for Started a new project in UI
+  * Final steps
+    * Manually inspect files for consistency
+    * Use `mr status` to verify what files will be uploaded, deleted, changed on next syncup
+    * Use `mr status --asdown` to validate files that would be pulled down
+* Product tasks
+  * Enable device ID
+  * List devices
+  * Read and write device data
+  * Create, retrieve, update, and delete firmware content in content area
+* Solution tasks
+  * Setup (steps above for getting started)
+  * Working with files
+    * `mr status`
+    * `mr syncup`
+    * `mr syncdown`
+    * `mr diff`
+  * Querying services
+    * Keystore
+      * Redis
+    * Timeseries
+      * Influx
+    * TSDB
+      * Cassandra
+    * SQL
+      * Postgres
+  * Logs for debugging
+* Advanced usage
+  * `mr config --dump`
+  * MR_PASSWORD environment variable for continuation integration stuff
+  * MR_CONFIGFILE
+  * dotenv
+    * --specs --cors --files --endpoints --modules --eventhandlers
+    * ( --roles --users)
+
+
+## Using MrMurano
+
 Do more from the command line with [Murano](https://exosite.com/platform/)
 
 MrMurano is the command-line tool that interacts with Murano and makes different
@@ -13,7 +89,48 @@ product definitions at once, set up endpoints and APIs, and more.
 MrMurano works around the idea of syncing, much like rsync.  Files from your project
 directory are synced up (or down) from Murano.
 
-## Usage
+## Requirements and Setup
+
+MrMurano is a [Ruby](https://www.ruby-lang.org/) application and depends on the following gems:
+* commander
+* highline
+* terminal
+* mime
+* mime
+* inifile
+* http
+* dotenv
+
+### Install
+
+```
+> gem install MrMurano
+```
+Or
+```
+> gem update MrMurano
+```
+
+You will likely need to be root for the above commands.  If you would rather not
+install as root, you can install gems in the user directory.
+
+```
+> gem install MrMurano --user-install
+```
+
+Your `PATH` may need to be updated to find the installed `mr` command.  See the
+[Ruby Gem FAQ](http://guides.rubygems.org/faqs/#user-install).  In short, you need
+to add the output of `ruby -rubygems -e 'puts Gem.user_dir'` to your `PATH`.
+
+### Windows Install
+
+The MrMurano gem will install on Windows.  There is also a single Windows binary
+Setup installer availible in [releases](https://github.com/exosite/MrMurano/releases)
+
+You can install Ruby on Windows with [RubyInstaller](http://rubyinstaller.org).
+You might run into a [known SSL cert issue](http://guides.rubygems.org/ssl-certificate-update/).
+If so follow the steps there to update the certs.
+
 
 ### To start from an existing project in Murano
 ```
@@ -45,37 +162,6 @@ running in Murano. Here is the list.
 
 Do stuff, see what changed: `mr status` or `mr diff`.
 Then deploy with `mr syncup`
-
-## Install
-
-```
-> gem install MrMurano
-```
-Or
-```
-> gem update MrMurano
-```
-
-You will likely need to be root for the above commands.  If you would rather not
-install as root, you can install gems in the user directory.
-
-```
-> gem install MrMurano --user-install
-```
-
-Your `PATH` may need to be updated to find the installed `mr` command.  See the
-[Ruby Gem FAQ](http://guides.rubygems.org/faqs/#user-install).  In short, you need
-to add the output of `ruby -rubygems -e 'puts Gem.user_dir'` to your `PATH`.
-
-### Windows Install
-
-The MrMurano gem will install on Windows.  There is also a single Windows binary
-Setup installer availible in [releases](https://github.com/exosite/MrMurano/releases)
-
-You can install Ruby on Windows with [RubyInstaller](http://rubyinstaller.org).
-You might run into a [known SSL cert issue](http://guides.rubygems.org/ssl-certificate-update/).
-If so follow the steps there to update the certs.
-
 
 ## Features
 
