@@ -4,8 +4,10 @@
 [![Build Status](https://travis-ci.org/tadpol/MrMurano.svg?branch=master)](https://travis-ci.org/tadpol/MrMurano)
 [![Inline docs](http://inch-ci.org/github/exosite/MrMurano.svg?branch=master)](http://inch-ci.org/github/exosite/MrMurano)
 
-* [Using MrMurano](#using-mrmurano)
 * [Requirements and Setup](#requirements-and-setup)
+* [Installation](#installation)
+* [Using MrMurano](#using-mrmurano)
+* [Features](#features)
   * User has created an account
   * User has installed MrMurano
   * Directory layout definition
@@ -78,8 +80,6 @@
     * ( --roles --users)
 
 
-## Using MrMurano
-
 Do more from the command line with [Murano](https://exosite.com/platform/)
 
 MrMurano is the command-line tool that interacts with Murano and makes different
@@ -101,7 +101,7 @@ MrMurano is a [Ruby](https://www.ruby-lang.org/) application and depends on the 
 * http
 * dotenv
 
-### Install
+## Installation
 
 ```
 > gem install MrMurano
@@ -131,6 +131,7 @@ You can install Ruby on Windows with [RubyInstaller](http://rubyinstaller.org).
 You might run into a [known SSL cert issue](http://guides.rubygems.org/ssl-certificate-update/).
 If so follow the steps there to update the certs.
 
+## Using MrMurano
 
 ### To start from an existing project in Murano
 ```
@@ -189,17 +190,17 @@ currently working on.
 
 The files for this are then:
 ```
-cat >> .mrmurano.dev <<EOF
+cat > .mrmurano.dev <<EOF
 [solution]
 id=AAAAAAAA
 EOF
 
-cat >> .mrmurano.stg <<EOF
+cat > .mrmurano.stg <<EOF
 [solution]
 id=BBBBBBBB
 EOF
 
-cat >> .mrmurano.prod <<EOF
+cat > .mrmurano.prod <<EOF
 [solution]
 id=CCCCCCCC
 EOF
