@@ -1,8 +1,17 @@
-# MrMurano
-
 [![Gem Version](https://badge.fury.io/rb/MrMurano.svg)](https://badge.fury.io/rb/MrMurano)
 [![Build Status](https://travis-ci.org/tadpol/MrMurano.svg?branch=master)](https://travis-ci.org/tadpol/MrMurano)
 [![Inline docs](http://inch-ci.org/github/exosite/MrMurano.svg?branch=master)](http://inch-ci.org/github/exosite/MrMurano)
+
+# MrMurano
+
+Do more from the command line with [Murano](https://exosite.com/platform/)
+
+MrMurano is the command-line tool that interacts with Murano and makes different
+tasks easier. MrMurano makes it easy to deploy code to a solution, import many
+product definitions at once, set up endpoints and APIs, and more.
+
+MrMurano works around the idea of syncing, much like rsync.  Files from your project
+directory are synced up (or down) from Murano.
 
 * [Requirements and Setup](#requirements-and-setup)
 * [Installation](#installation)
@@ -79,15 +88,6 @@
     * --specs --cors --files --endpoints --modules --eventhandlers
     * ( --roles --users)
 
-
-Do more from the command line with [Murano](https://exosite.com/platform/)
-
-MrMurano is the command-line tool that interacts with Murano and makes different
-tasks easier. MrMurano makes it easy to deploy code to a solution, import many
-product definitions at once, set up endpoints and APIs, and more.
-
-MrMurano works around the idea of syncing, much like rsync.  Files from your project
-directory are synced up (or down) from Murano.
 
 ## Requirements and Setup
 
